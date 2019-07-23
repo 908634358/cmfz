@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.baizhi.dao.UserDao">
+
+    <sql id="Base_Column_List">
+    id,
+    phone,
+    username,
+    `password`,
+    salt,
+    dharma,
+    province,
+    city,
+    sign,
+    photo,
+    create_date,
+    sex
+</sql>
+    <resultMap id="BaseResultMap" type="com.baizhi.entity.User">
+        <result column="id" property="id"/>
+        <result column="phone" property="phone"/>
+        <result column="username" property="username"/>
+        <result column="password" property="password"/>
+        <result column="salt" property="salt"/>
+        <result column="dharma" property="dharma"/>
+        <result column="province" property="province"/>
+        <result column="city" property="city"/>
+        <result column="sign" property="sign"/>
+        <result column="photo" property="photo"/>
+        <result column="create_date" property="createDate"/>
+        <result column="sex" property="sex"/>
+    </resultMap>
+    <select id="selectAllFirstHalfYear" resultType="integer">
+        SELECT COUNT(*) FROM c_user WHERE DATEDIFF(NOW(),create_date)&lt;#{count}
+    </select>
+    <select id="selectAllCountBySex" resultType="com.baizhi.pojo.City">
+        SELECT COUNT(*) as value ,city as name FROM c_user WHERE sex=#{sex,jdbcType=VARCHAR}  GROUP BY city
+    </select>
+
+</mapper>

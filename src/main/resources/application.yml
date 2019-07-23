@@ -1,0 +1,39 @@
+server:
+  port: 9090
+  servlet:
+    context-path: /cmfz
+    jsp:
+      init-parameters:
+        development: true
+
+spring:
+  # 数据库的配置
+  datasource:
+    url: jdbc:mysql://localhost:3306/cmfz
+    username: root
+    password: root
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+  # 视图跳转的配置
+  mvc:
+    view:
+      prefix: /
+      suffix: .jsp
+  # 配置文件大小
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 50MB
+    # data:
+    #    elasticsearch:
+    #     cluster-nodes: 192.168.106.134:9300
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    database: mysql
+
+mybatis:
+  mapper-locations: classpath:com/baizhi/mapper/*Mapper.xml
+  type-aliases-package: com.baizhi.entity

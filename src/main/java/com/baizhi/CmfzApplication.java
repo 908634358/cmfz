@@ -20,10 +20,6 @@ public class CmfzApplication {
 
     @Bean
     public HttpMessageConverters fastJsonHttpMessageConverters() {
-        System.out.println("true = " + true);
-        System.out.println("fffdsaf");
-        System.out.println("fffdsaf");
-        System.out.println("fffdsaf");
         // 1. 需要定义一个converter转换消息的对象
         FastJsonHttpMessageConverter fasHttpMessageConverter = new FastJsonHttpMessageConverter();
         // 2. 添加fastjson的配置信息，比如:是否需要格式化返回的json的数据

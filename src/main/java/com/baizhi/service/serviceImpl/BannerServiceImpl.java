@@ -4,6 +4,7 @@ import com.baizhi.dao.BannerDao;
 import com.baizhi.entity.Banner;
 import com.baizhi.service.BannerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import tk.mybatis.mapper.common.Mapper;
 
@@ -15,6 +16,8 @@ import java.util.Map;
 public class BannerServiceImpl implements BannerService {
     @Autowired
     private BannerDao bannerDao;
+    @Autowired
+    private RedisTemplate<String, Object> redisTemplate;
 
     @Override
     public Map<String, Object> add(Banner args, Mapper<Banner> mapper) {
@@ -40,7 +43,18 @@ public class BannerServiceImpl implements BannerService {
 
     @Override
     public Map<String, Object> del(Banner args, Mapper<Banner> mapper) {
-        return null;
+        Map<String, Object> map = new HashMap<>();
+        try {
+            mapper.deleteByPrimaryKey(args);
+            map.put("status", true);
+            map.put("message", args.getId());
+            redisTemplate.opsForHash().delete("BannerDel", map);
+        } catch (Exception e) {
+            map.put("status", false);
+            map.put("message", e.getMessage());
+        }
+        return map;
+
     }
 
     @Override

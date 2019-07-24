@@ -10,9 +10,9 @@ import java.util.Map;
 
 /**
  * 封装crud操作 为Map集合
- *       status 状态
- *       状态的信息
- * */
+ * status 状态
+ * 状态的信息
+ */
 @Service
 public class CrudMapperImpl<T> implements CrudMapper<T> {
     /**

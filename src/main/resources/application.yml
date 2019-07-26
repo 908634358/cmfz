@@ -37,6 +37,10 @@ spring:
         min-idle: 0
     # 连接超时时间（毫秒）
     timeout: 1000
+  # elasticsearch 的配置
+  data:
+    elasticsearch:
+      cluster-nodes: 192.168.106.134:9300
 
   # 视图跳转的配置
   mvc:
@@ -48,9 +52,6 @@ spring:
     multipart:
       max-file-size: 50MB
       max-request-size: 50MB
-    # data:
-    #    elasticsearch:
-    #     cluster-nodes: 192.168.106.134:9300
 
   jpa:
     hibernate:

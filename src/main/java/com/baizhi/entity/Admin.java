@@ -1,50 +1,53 @@
 package com.baizhi.entity;
 
-import javax.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.io.Serializable;
 
-import lombok.*;
-
 /**
- * @Description  
- * @Author  JKB
- * @Date 2019-07-09 
+ * @Description
+ * @Author JKB
+ * @Date 2019-07-09
  */
-
 @Data
 @Entity
 @AllArgsConstructor
-@Builder
 @NoArgsConstructor
-@Table ( name ="c_admin" )
+@Table(name = "c_admin")
 @ToString
-public class Admin  implements Serializable {
-	private static final long serialVersionUID =  8726059359884296778L;
+public class Admin implements Serializable {
+    private static final long serialVersionUID = 8726059359884296778L;
 
-	/**
-	 * 管理员的id
+    /**
+     * 管理员的id
+     */
+    @Id
+    @Column(name = "id")
+    private String id;
 
-	 */
-	@Id
-   	@Column(name = "id" )
-	private String id;
+    /**
+     * 用户名
+     */
+    @Column(name = "username")
+    private String username;
 
-	/**
-	 * 用户名
-	 */
-   	@Column(name = "username" )
-	private String username;
+    /**
+     * 密码
+     */
+    @Column(name = "password")
+    private String password;
 
-	/**
-	 * 密码
-	 */
-   	@Column(name = "password" )
-	private String password;
-
-	/**
-	 * 昵称
-	 */
-   	@Column(name = "nickname" )
-	private String nickname;
+    /**
+     * 昵称
+     */
+    @Column(name = "nickname")
+    private String nickname;
 
 }

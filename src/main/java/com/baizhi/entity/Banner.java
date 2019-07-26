@@ -1,7 +1,10 @@
 package com.baizhi.entity;
 
 import com.alibaba.fastjson.annotation.JSONField;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -22,7 +25,6 @@ import java.util.Date;
 @Data
 @Entity
 @AllArgsConstructor
-@Builder
 @NoArgsConstructor
 @DynamicUpdate(value = true)
 @DynamicInsert(value = true)

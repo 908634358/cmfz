@@ -15,6 +15,8 @@ import tk.mybatis.spring.annotation.MapperScan;
 public class CmfzApplication {
 
     public static void main(String[] args) {
+        //解决netty冲突
+        System.setProperty("es.set.netty.runtime.available.processors", "false");
         SpringApplication.run(CmfzApplication.class, args);
     }
 

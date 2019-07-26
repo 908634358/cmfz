@@ -20,4 +20,8 @@ public interface ArticleService extends ExtensionMapper<Article> {
     List<Article> selectAll();
 
     List<Article> selectArticleByGuruId(String guruId);
+
+    List<com.baizhi.pojo.Article> selectArticleByContent(String content);
+
+
 }

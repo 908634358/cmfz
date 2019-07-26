@@ -23,7 +23,6 @@ import java.util.Date;
 @Data
 @Entity
 @AllArgsConstructor
-@Builder
 @NoArgsConstructor
 @Table(name = "c_chapter")
 public class Chapter implements Serializable {

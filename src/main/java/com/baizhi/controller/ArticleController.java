@@ -15,10 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 @RestController
 @RequestMapping("/article")
@@ -111,6 +108,16 @@ public class ArticleController {
 
         map.put("file_list", list);
         return map;
+    }
+/*文章的查询功能*/
+    @RequestMapping("search")
+    public List<com.baizhi.pojo.Article> search(String content) {
+        System.out.println("content:" + content);
+        List<com.baizhi.pojo.Article> articles = articleService.selectArticleByContent(content);
+        for (com.baizhi.pojo.Article article : articles) {
+            System.out.println(article);
+        }
+        return articles;
     }
 
 }

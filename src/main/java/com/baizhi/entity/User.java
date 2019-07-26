@@ -23,7 +23,6 @@ import java.util.Date;
 @Data
 @Entity
 @AllArgsConstructor // lombok 注解 有参构造
-//@Builder // lombok 注解 构造者模式 目前不理解
 @NoArgsConstructor // lombok 注解
 @Table(name = "c_user")
 public class User implements Serializable {

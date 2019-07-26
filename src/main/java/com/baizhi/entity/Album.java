@@ -24,7 +24,6 @@ import java.util.Date;
 @Data
 @Entity
 @AllArgsConstructor
-@Builder
 @NoArgsConstructor
 @Table ( name ="c_album" )
 public class Album  implements Serializable {

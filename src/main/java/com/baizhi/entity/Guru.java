@@ -19,7 +19,6 @@ import lombok.NoArgsConstructor;
 @Data
 @Entity
 @AllArgsConstructor
-@Builder
 @NoArgsConstructor
 @Table ( name ="c_guru" )
 public class Guru  implements Serializable {

@@ -15,16 +15,16 @@
     <script src="statics/jqgrid/js/trirand/i18n/grid.locale-cn.js" type="text/javascript"></script>
     <script src="statics/jqgrid/js/trirand/jquery.jqGrid.min.js" type="text/javascript"></script>
     <script src="statics/jqgrid/js/ajaxfileupload.js" type="text/javascript"></script>
-        <%--引入KindEitor的js文件--%>
-        <script charset="utf-8" src="kindeditor/kindeditor-all.js" type="text/javascript" ></script>
-        <script charset="utf-8" src="kindeditor/lang/zh-CN.js" type="text/javascript"></script>
+    <%--引入KindEitor的js文件--%>
+    <script charset="utf-8" src="kindeditor/kindeditor-all.js" type="text/javascript"></script>
+    <script charset="utf-8" src="kindeditor/lang/zh-CN.js" type="text/javascript"></script>
 
-        <!-- 引入 ECharts 文件 -->
-        <script src="incubator-echarts-4.2.1/incubator-echarts-4.2.1/dist/echarts.min.js"></script>
-        <script src="incubator-echarts-4.2.1/incubator-echarts-4.2.1/map/js/china.js"></script>
+    <!-- 引入 ECharts 文件 -->
+    <script src="incubator-echarts-4.2.1/incubator-echarts-4.2.1/dist/echarts.min.js"></script>
+    <script src="incubator-echarts-4.2.1/incubator-echarts-4.2.1/map/js/china.js"></script>
 
 
-        <title>持明法洲后台管理系统</title>
+    <title>持明法洲后台管理系统</title>
 </head>
 <body>
 
@@ -91,6 +91,9 @@
                     <div class="panel-body text-center">
                         <a href="javascript:$('#contentLayout').load('article/article-show.jsp')"
                            class="btn btn-default">查询文章</a>
+                        <br><br>
+                        <a href="javascript:$('#contentLayout').load('article/article-search.jsp')"
+                           class="btn btn-default">搜索文章</a>
                     </div>
                 </div>
             </div>

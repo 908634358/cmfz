@@ -20,7 +20,6 @@ import java.util.Date;
 @Data
 @Entity
 @AllArgsConstructor
-@Builder
 @NoArgsConstructor
 @Table ( name ="c_course" )
 public class Course  implements Serializable {

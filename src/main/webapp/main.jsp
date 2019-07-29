@@ -1,3 +1,4 @@
+<%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
 <%@page pageEncoding="UTF-8" isELIgnored="false" %>
 <html lang="en">
 <head>
@@ -36,97 +37,112 @@
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
-                <li><a>欢迎：${loginAdmin.nickname}</a></li>
-                <li><a href="${pageContext.request.contextPath}/admin/exit">退出系统</a></li>
+                <li><a>欢迎: <shiro:principal></shiro:principal></a></li>
+                // 未登录 <%-- <shiro:notAuthenticated>--%>
+                <shiro:authenticated>
+                    <li><a href="${pageContext.request.contextPath}/admin/exit">退出系统</a></li>
+                </shiro:authenticated>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>
+// 检查是否登陆
+<shiro:authenticated>
 
-<%--中间栅格系统--%>
-<div class="row">
-    <%--左侧--%>
-    <div class="col-xs-2">
-        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-            <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="headingOne">
-                    <h4 class="panel-title text-center">
-                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
-                           aria-expanded="true" aria-controls="collapseOne">
-                            <h4>轮播图管理</h4>
-                        </a>
-                    </h4>
-                </div>
-                <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-                    <div class="panel-body text-center">
-                        <a href="javascript:$('#contentLayout').load('banner/banner-show.jsp')" class="btn btn-default">查询轮播图</a>
+    <%--中间栅格系统--%>
+    <shiro:hasRole name="admin">
+        <div class="row">
+        <%--左侧--%>
+        <div class="col-xs-2">
+            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingOne">
+                        <h4 class="panel-title text-center">
+                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
+                               aria-expanded="true" aria-controls="collapseOne">
+                                <h4>轮播图管理</h4>
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel"
+                         aria-labelledby="headingOne">
+                        <div class="panel-body text-center">
+                            <a href="javascript:$('#contentLayout').load('banner/banner-show.jsp')"
+                               class="btn btn-default">查询轮播图</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="headingTwo">
-                    <h4 class="panel-title text-center">
-                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
-                           href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                            <h4>专辑管理</h4>
-                        </a>
-                    </h4>
-                </div>
-                <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                    <div class="panel-body text-center">
-                        <a href="javascript:$('#contentLayout').load('album/album-show.jsp')" class="btn btn-default">查询专辑</a>
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingTwo">
+                        <h4 class="panel-title text-center">
+                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
+                               href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                <h4>专辑管理</h4>
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                        <div class="panel-body text-center">
+                            <a href="javascript:$('#contentLayout').load('album/album-show.jsp')"
+                               class="btn btn-default">查询专辑</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="headingThree">
-                    <h4 class="panel-title text-center">
-                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
-                           href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                            <h4>文章管理</h4>
-                        </a>
-                    </h4>
-                </div>
-                <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-                    <div class="panel-body text-center">
-                        <a href="javascript:$('#contentLayout').load('article/article-show.jsp')"
-                           class="btn btn-default">查询文章</a>
-                        <br><br>
-                        <a href="javascript:$('#contentLayout').load('article/article-search.jsp')"
-                           class="btn btn-default">搜索文章</a>
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingThree">
+                        <h4 class="panel-title text-center">
+                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
+                               href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                <h4>文章管理</h4>
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel"
+                         aria-labelledby="headingThree">
+                        <div class="panel-body text-center">
+                            <a href="javascript:$('#contentLayout').load('article/article-show.jsp')"
+                               class="btn btn-default">查询文章</a>
+                            <br><br>
+                            <a href="javascript:$('#contentLayout').load('article/article-search.jsp')"
+                               class="btn btn-default">搜索文章</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="headingFour">
-                    <h4 class="panel-title text-center">
-                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
-                           href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                            <h4>用户管理</h4>
-                        </a>
-                    </h4>
-                </div>
-                <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
-                    <div class="panel-body text-center">
-                        <a href="javascript:$('#contentLayout').load('user/user-show.jsp')"
-                           class="btn btn-default">查询用户</a>
-                        <br><br>
-                        <a href="javascript:$('#contentLayout').load('user/user-line.jsp')" class="btn btn-default">用户注册趋势</a>
-                        <br><br>
-                        <a href="javascript:$('#contentLayout').load('user/user-map.jsp')" class="btn btn-default">用户地区分布</a>
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingFour">
+                        <h4 class="panel-title text-center">
+                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
+                               href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                <h4>用户管理</h4>
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseFour" class="panel-collapse collapse" role="tabpanel"
+                         aria-labelledby="headingFour">
+                        <div class="panel-body text-center">
+                            <a href="javascript:$('#contentLayout').load('user/user-show.jsp')"
+                               class="btn btn-default">查询用户</a>
+                            <br><br>
+                            <a href="javascript:$('#contentLayout').load('user/user-line.jsp')" class="btn btn-default">用户注册趋势</a>
+                            <br><br>
+                            <a href="javascript:$('#contentLayout').load('user/user-map.jsp')" class="btn btn-default">用户地区分布</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <%--右侧--%>
-    <div class="col-xs-10" id="contentLayout">
-        <div class="jumbotron" style="padding-left: 80px">
-            <h2>欢迎来到持明法洲后台管理系统!</h2>
+    </shiro:hasRole>
+    <shiro:hasRole name="super">
+        <%--右侧--%>
+        <div class="col-xs-10" id="contentLayout">
+            <div class="jumbotron" style="padding-left: 80px">
+                <h2>欢迎来到持明法洲后台管理系统!</h2>
+            </div>
+            <img src="image/shouye.jpg" style="width: 100%" alt="">
         </div>
-        <img src="image/shouye.jpg" style="width: 100%" alt="">
+    </shiro:hasRole>
     </div>
-</div>
+</shiro:authenticated>
 
 
 <%--底部页脚--%>

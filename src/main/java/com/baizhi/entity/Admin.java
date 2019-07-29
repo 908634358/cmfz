@@ -49,5 +49,7 @@ public class Admin implements Serializable {
      */
     @Column(name = "nickname")
     private String nickname;
+    @Column(name = "salt")
+    private String salt;
 
 }

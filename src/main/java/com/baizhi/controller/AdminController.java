@@ -1,13 +1,14 @@
 package com.baizhi.controller;
 
 import com.baizhi.service.AdminService;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -19,7 +20,6 @@ public class AdminController {
 
     @RequestMapping("/login")
     @ResponseBody
-
     public Map<String, Object> login(String username, String password, String enCode, HttpServletRequest request) {
         System.out.println("username = " + username);
         System.out.println("password = " + password);
@@ -36,9 +36,9 @@ public class AdminController {
     }
 
     @RequestMapping("exit")
-    public String exit(HttpServletRequest request) {
-        HttpSession session = request.getSession();
-        session.removeAttribute("loginAdmin");
+    public String exit() {
+        Subject subject = SecurityUtils.getSubject();
+        subject.logout();
         return "redirect:/login/login.jsp";
     }
 }
